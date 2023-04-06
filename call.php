@@ -1,17 +1,18 @@
 <?php
-header("Content-Type:text/html; charset=utf-8");
 
 
-function ram() {
-	$command ="C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe call/ram.py ";
-	$output = exec($command);
-	print($output);
+function ram() {	
+	$command ="tasklist /fo list";
+	$output = shell_exec($command);
+	$result = str_replace("\n","<br>",$output);
+	echo iconv("big5","UTF-8//IGNORE", $result);	
 }
 function cpu() {
 	$command ="C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe call/cpu.py ";
 	$output = exec($command);
 	print($output);
 }
+
 
 if (isset($_GET['ram'])) {
 	ram();
