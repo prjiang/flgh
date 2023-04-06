@@ -1,10 +1,7 @@
 <?php
 header("Content-Type:text/html; charset=utf-8");
-/*
-$command ="C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe ram.py ";
-$output = exec($command);
-print($output);
-*/
+
+
 function ram() {
 	$command ="C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe call/ram.py ";
 	$output = exec($command);
