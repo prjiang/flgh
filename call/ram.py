@@ -37,7 +37,7 @@ def split_list(l, n):
     yield l[idx:idx+n]
 result = list(split_list(procs, 1,))
 '''
-test = []
+raminfo = []
 line = str('<br><br>')
 
 def group_elements(n, iterable, padvalue='x'):
@@ -45,9 +45,9 @@ def group_elements(n, iterable, padvalue='x'):
 
 for output in group_elements(1,procs):
     #print(output)
-    test.append(output)
-    test.append(line)
-print(test)
+    raminfo.append(output)
+    raminfo.append(line)
+print(raminfo)
 
 #print(procs)
     # rss: 實際記憶體使用量
