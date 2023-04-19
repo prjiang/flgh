@@ -12,13 +12,13 @@ print($output);
 	putenv('LC_ALL='.$locale);
 */
 
-// taskkill /s 192.168.0.8 /u user /p 00000000 /f /im chrome.exe
+// taskkill /s  /u  /p  /f /im chrome.exe
 
 if (isset($_POST['submit'])) {
 	$ip = $_POST['ip'];
 	$user = $_POST['user'];
 	$pw = $_POST['pw'];
-	$command ="tasklist /s $ip /u $user /p $pw /fo list";
+	$command ="tasklist /s $ip /u $user /p $pw /fo list /V > data\\test.txt";
 	echo 'IP: '.$ip.'<br>';
 	$output = shell_exec($command);
 	$result = str_replace("\n","<br>",$output);
