@@ -33,8 +33,9 @@
 			$ip = $_POST['ip'];
 			$user = $_POST['user'];
 			$pw = $_POST['pw'];
-	
-			$command = "tasklist /s $ip /u $user /p $pw /fo list";
+
+			//$command = "tasklist /s $ip /u $user /p $pw /fo list 2>&1 1> /dev/null"; 解決內部正常運作，但php讀不到
+			$command = "tasklist /s $ip /u $user /p $pw /fo csv";
 			//$save_command = "tasklist /s $ip /u $user /p $pw /fo list /V > info\\test.txt";
 			echo 'IP: '.$ip.'<br>';
 			$output = shell_exec($command);
@@ -48,7 +49,7 @@
 				fclose($fp);
 			}
 
-			$tocsv = shell_exec("C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe main.py");
+			//$tocsv = shell_exec("C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe tocsv.py");
 
 
 			//$dataset -> ImportFromCSV("info/test.csv",",",array(1),false);
