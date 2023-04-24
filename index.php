@@ -35,28 +35,39 @@
 			$pw = $_POST['pw'];
 
 			//$command = "tasklist /s $ip /u $user /p $pw /fo list 2>&1 1> /dev/null"; 解決內部正常運作，但php讀不到
-			$command = "tasklist /s $ip /u $user /p $pw /fo csv";
-			//$save_command = "tasklist /s $ip /u $user /p $pw /fo list /V > info\\test.txt";
+			$command_list = "tasklist /s $ip /u $user /p $pw /fo list";
+			$command_csv = shell_exec("tasklist /s $ip /u $user /p $pw /fo csv");
+			//$save_command = "tasklist /s $ip /u $user /p $pw /fo csv > info\\test2.txt";
+			//exec($save_command);
 			echo 'IP: '.$ip.'<br>';
-			$output = shell_exec($command);
+
+			$output = shell_exec($command_list);
 			$result = str_replace("\n","<br>",$output);
 			echo iconv("big5","UTF-8//IGNORE", $result);
-
+			
 	
 			$filename = "info\\test.txt";
 			if(@$fp = fopen($filename, 'w+')) {
-				fwrite($fp, $output);
+				fwrite($fp, $command_csv);
 				fclose($fp);
 			}
 
-			//$tocsv = shell_exec("C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe tocsv.py");
+			$tocsv = shell_exec("C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe csvprocess.py");
 
+			echo '<hr>';
+			
+			include("pChart/class/pDraw.class.php");
+			include("pChart/class/pImage.class.php");
+			include("pChart/class/pData.class.php");
 
-			//$dataset -> ImportFromCSV("info/test.csv",",",array(1),false);
+			$DataSet = new pData();
+			$DataSet -> ImportFromCSV("info/test.csv");
+			
 
 		}
 
 	?>
 	</div>
+
 </body>
 </html>
