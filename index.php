@@ -39,11 +39,11 @@
 			$command_csv = shell_exec("tasklist /s $ip /u $user /p $pw /fo csv");
 			//$save_command = "tasklist /s $ip /u $user /p $pw /fo csv > info\\test2.txt";
 			//exec($save_command);
-			echo 'IP: '.$ip.'<br>';
+			echo '<b style="font-size:20px">IP: '.$ip.'</b><hr>';
 
 			$output = shell_exec($command_list);
 			$result = str_replace("\n","<br>",$output);
-			echo iconv("big5","UTF-8//IGNORE", $result);
+			//echo iconv("big5","UTF-8//IGNORE", $result);
 			
 	
 			$filename = "info\\test.txt";
@@ -53,16 +53,34 @@
 			}
 
 			$tocsv = shell_exec("C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe csvprocess.py");
-
-			echo '<hr>';
 			
+			$draw = shell_exec("C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe draw.py");
+
+			echo "\n<img src='info\\ram.png'>"."\n<hr>";
+
+			//echo iconv("big5","UTF-8//IGNORE", $result);
+
+			echo "\n<table>\n\n";
+			$file = fopen("info\\test.csv", "r");
+			while (($line = fgetcsv($file)) !== false) {
+        		echo "<tr>";
+        		foreach ($line as $cell) {
+                	echo "<td>" . htmlspecialchars($cell) . "</td>";
+        		}
+        		echo "</tr>\n";
+			}
+			fclose($file);
+			echo "\n</table>";
+
+			/*
+			session_start();
 			include("pChart/class/pDraw.class.php");
 			include("pChart/class/pImage.class.php");
 			include("pChart/class/pData.class.php");
 
 			$DataSet = new pData();
 			$DataSet -> ImportFromCSV("info/test.csv");
-			
+			*/
 
 		}
 
