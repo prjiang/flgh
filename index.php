@@ -46,7 +46,7 @@
 			//echo iconv("big5","UTF-8//IGNORE", $result);
 			
 	
-			$filename = "info\\test.txt";
+			$filename = "info\\ram.txt";
 			if(@$fp = fopen($filename, 'w+')) {
 				fwrite($fp, $command_csv);
 				fclose($fp);
@@ -61,7 +61,7 @@
 			//echo iconv("big5","UTF-8//IGNORE", $result);
 
 			echo "\n<table>\n\n";
-			$file = fopen("info\\test.csv", "r");
+			$file = fopen("info\\ram.csv", "r");
 			while (($line = fgetcsv($file)) !== false) {
         		echo "<tr>";
         		foreach ($line as $cell) {
