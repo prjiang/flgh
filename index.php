@@ -70,7 +70,7 @@
 </head>
 
 <body>
-	<div>
+	<div class="wrap">
 	<?php
 		// header("Content-Type:text/html; charset=utf-8");
 		/*
@@ -97,7 +97,7 @@
 			$command_csv = shell_exec("tasklist /s $ip /u $user /p $pw /fo csv");
 			//$save_command = "tasklist /s $ip /u $user /p $pw /fo csv > info\\test2.txt";
 			//exec($save_command);
-			echo '<div style="text-align:center;font-size:30px;"><b>IP: '.$ip.'</b></div><hr>';
+			echo '<div class="wrap" style="text-align:center;font-size:30px;color:#ffffff;"><b>IP: '.$ip.'</b></div><hr>';
 
 			$output = shell_exec($command_list);
 			$result = str_replace("\n","<br>",$output);
@@ -114,7 +114,7 @@
 			
 			$draw = shell_exec("C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe draw.py");
 
-			echo "\n<div>\n<img src='info\\ram.png'>"."\n</div>\n<hr>";
+			echo "\n<div>\n<img src='info\\ram.png' style='display:block; margin:auto;'>"."\n</div>\n<hr>";
 
 			//echo iconv("big5","UTF-8//IGNORE", $result);
 
