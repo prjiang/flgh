@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-df = pd.read_csv('info/test.csv', encoding='big5')
+df = pd.read_csv('info/ram.csv', encoding='big5')
 
 df = df.drop(columns=['PID'])
 
