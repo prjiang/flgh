@@ -97,7 +97,7 @@
 			$command_csv = shell_exec("tasklist /s $ip /u $user /p $pw /fo csv");
 			//$save_command = "tasklist /s $ip /u $user /p $pw /fo csv > info\\test2.txt";
 			//exec($save_command);
-			echo '<div class="wrap" style="text-align:center;font-size:30px;color:#ffffff;"><b>IP: '.$ip.'</b></div><hr>';
+			echo '<div style="text-align:center;font-size:30px;color:#ffffff;"><b>IP: '.$ip.'</b></div><hr>';
 
 			$output = shell_exec($command_list);
 			$result = str_replace("\n","<br>",$output);
@@ -118,7 +118,7 @@
 
 			//echo iconv("big5","UTF-8//IGNORE", $result);
 
-			echo "\n<div class=\"wrap\">\n<table>\n\n";
+			echo "\n<div>\n<table>\n\n";
 			$file = fopen("info\\test.csv", "r");
 			while (($line = fgetcsv($file)) !== false) {
         		echo "<tr>";
