@@ -1,3 +1,5 @@
+## Real-time to get remote PC performance system using WMI.
+
 ### 本地端
 
 使用 python 進行 WMI 的連線與後續操作，因此須於本地端安裝 python 與其相關套件。
