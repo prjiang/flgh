@@ -1,0 +1,32 @@
+// 開啟WMI https://www.configserverfirewall.com/windows-10/the-rpc-server-is-unavailable/
+
+net start winmgmt
+
+//the RPC server is unavailable
+
+   //防火牆允許WMI(solution)
+   Enable-NetFirewallRule -DisplayGroup "Windows Management Instrumentation (WMI)"
+
+   //禁用WMI
+   Disable-NetFirewallRule -DisplayGroup "Windows Management Instrumentation (WMI)"
+
+//the user name or password is incorrect
+
+   //禁用UAC遠程限制(solution)
+   Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" -Name "LocalAccountTokenFilterPolicy" -Value 1
+
+   //重新啟用UAC遠程限制
+   Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" -Name "LocalAccountTokenFilterPolicy" -Value 0
+
+// 開啟WinRM
+
+winrm quickconfig
+
+enable-psremoting
+
+Start-Service WinRm //啟用目標端電腦的 WinRM 服務
+Get-Service WinRm //檢查目標端電腦的 WinRM 服務
+Enter-PSSession -ComputerName localhost //可檢查是否允許遠端執行
+Enable-PSRemoting –force //允許遠端執行
+
+Restart-Service WinRM //重啟 WinRM service
