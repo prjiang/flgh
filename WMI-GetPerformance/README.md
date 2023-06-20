@@ -5,6 +5,7 @@
 使用 python 進行 WMI 的連線與後續操作，因此須於本地端安裝 python 與其相關套件。
 
 * 安裝 python ，並將其新增至環境變數
+  
     [Python: https://www.python.org/](https://www.python.org/)
   
   
