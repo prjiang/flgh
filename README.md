@@ -1,3 +1,1 @@
-### Flgh Intern
-
-早8的班，好想睡覺RRRRRR இ௰இ
+### Flgh Intern (Feb 20, 2023 ~ Jun 20, 2023)
