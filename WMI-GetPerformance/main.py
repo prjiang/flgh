@@ -72,7 +72,7 @@ class TasklistApp:
         # 調整視窗尺寸以確保能夠顯示所有的進程
         self.window.geometry("800x600")
 
-        # 创建子窗口
+        # 創建子窗口
         graph_window = tk.Toplevel(self.window)
         graph_window.title("Resource Usage Graph")
         graph_window.geometry("1200x600")
@@ -99,12 +99,12 @@ class TasklistApp:
         if not os.path.exists(table_folder):
             os.mkdir(table_folder)
 
-        # 創建表格資料夾
+        # 創建csv資料夾
         csv_folder = os.path.join(ip_folder, "csv")
         if not os.path.exists(csv_folder):
             os.mkdir(csv_folder)
 
-        # 创建图表
+        # 創建圖表
         fig, ax = plt.subplots(2, 1, figsize=(10, 8))
         canvas = FigureCanvasTkAgg(fig, master=graph_window)
         canvas.get_tk_widget().pack(fill=tk.BOTH, expand=True)
@@ -136,28 +136,28 @@ class TasklistApp:
             
             processes.clear()
             
-            # 清除原有图表内容
+            # 清除原有圖表内容
             for axis in ax:
                 axis.clear()
 
-            # 取得記憶體使用量前十名的程式資料
+            # 取得記憶體與CPU使用量前十名的程式資料
             top_memory = sorted(process_data.items(), key=lambda x: x[1][0], reverse=True)[:10]
             top_cpu = sorted(process_data.items(), key=lambda x: x[1][1], reverse=True)[:10]
 
-            # 取得記憶體使用量前十名的程式名稱和資料
+            # 取得記憶體與CPU使用量前十名的程式名稱和資料
             top_process_names_memory = [process[0] for process in top_memory]
             top_memory_usages = [process[1][0] for process in top_memory]
             top_process_names_cpu = [process[0] for process in top_cpu]
             top_cpu_usages = [process[1][1] for process in top_cpu]
 
-            # 绘制柱状图
+            # 繪製記憶體使用率柱狀圖
             ax[0].bar(top_process_names_memory, top_memory_usages)
             ax[0].set_xlabel('Process Name')
             ax[0].set_ylabel('Memory Usage (MB)')
             ax[0].set_title('Memory Usage')
 
-            # 绘制折线图
-            ax[1].bar(top_process_names_cpu, top_cpu_usages) # marker='o'
+            # 繪製CPU使用率柱狀圖
+            ax[1].bar(top_process_names_cpu, top_cpu_usages)
             ax[1].set_xlabel('Process Name')
             ax[1].set_ylabel('CPU Usage (%)')
             ax[1].set_title('CPU Usage')
@@ -171,7 +171,7 @@ class TasklistApp:
             # 調整子圖間距
             plt.subplots_adjust(hspace=0.5)
 
-            # 更新图表
+            # 更新圖表
             canvas.draw()
 
             # save draw
